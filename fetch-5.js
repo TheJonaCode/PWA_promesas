@@ -1,11 +1,17 @@
-fetch('https://reqres.in/api/users/1')
-    .then(res => {
-        res.clone().json()
-            .then(usuario => console.log(usuario.data));
+fetch('https://reqres.in/api/users/666')
+    .then(resp => {
 
-        res.clone().json()
-            .then(usuario => console.log(usuario.data));
+        if (resp.ok) {
+            return resp.json();
 
-        res.json()
-            .then(usuario => console.log(usuario.data));
+        } else {
+            throw new Error('No existe ese número de usuario')
+        }
+
+
+    })
+    .catch(error => {
+        console.log('Error en la petición');
+        console.log(error);
+
     });
